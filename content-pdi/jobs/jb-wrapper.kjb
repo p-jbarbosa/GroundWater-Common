@@ -396,8 +396,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>160</yloc>
+      <xloc>400</xloc>
+      <yloc>288</yloc>
     </entry>
     <entry>
       <name>sv-project.properties</name>
@@ -411,8 +411,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>864</xloc>
-      <yloc>160</yloc>
+      <xloc>592</xloc>
+      <yloc>288</yloc>
     </entry>
     <entry>
       <name>sv-V_JOB_NAME</name>
@@ -425,14 +425,14 @@
         <field>
           <variable_name>V_JOB_NAME</variable_name>
           <variable_value>${P_JOB_NAME}</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>ROOT_JOB</variable_type>
         </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
-      <yloc>160</yloc>
+      <xloc>240</xloc>
+      <yloc>288</yloc>
     </entry>
     <entry>
       <name>wrt-starting-references</name>
@@ -480,8 +480,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1040</xloc>
-      <yloc>160</yloc>
+      <xloc>1088</xloc>
+      <yloc>288</yloc>
     </entry>
     <entry>
       <name>Success</name>
@@ -490,8 +490,50 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1168</xloc>
+      <xloc>1200</xloc>
+      <yloc>288</yloc>
+    </entry>
+    <entry>
+      <name>fe-job.properties</name>
+      <description/>
+      <type>FILE_EXISTS</type>
+      <filename>${CONFIG_DIR}/properties/${P_PROJECT_NAME}-${P_JOB_NAME}.properties</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>768</xloc>
+      <yloc>288</yloc>
+    </entry>
+    <entry>
+      <name>wtl-no-job-properties</name>
+      <description/>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>
+JOB NAME - ${P_JOB_NAME}
+
+</logmessage>
+      <loglevel>Minimal</loglevel>
+      <logsubject>--------NO JOB PROPERTIES---------</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>768</xloc>
       <yloc>160</yloc>
+    </entry>
+    <entry>
+      <name>sv-job.properties</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <replacevars>Y</replacevars>
+      <filename>${CONFIG_DIR}/properties/${P_PROJECT_NAME}-${P_JOB_NAME}.properties</filename>
+      <file_variable_type>JVM</file_variable_type>
+      <fields>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>896</xloc>
+      <yloc>288</yloc>
     </entry>
   </entries>
   <hops>
@@ -532,7 +574,34 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
+      <from>load-job</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>sv-project.properties</from>
+      <to>fe-job.properties</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>fe-job.properties</from>
+      <to>wtl-no-job-properties</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>wtl-no-job-properties</from>
       <to>load-job</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -541,8 +610,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>load-job</from>
-      <to>Success</to>
+      <from>fe-job.properties</from>
+      <to>sv-job.properties</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>sv-job.properties</from>
+      <to>load-job</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
