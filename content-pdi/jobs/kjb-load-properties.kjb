@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>jb-wrapper</name>
+  <name>kjb-load-properties</name>
   <description/>
   <extended_description/>
   <job_version/>
@@ -11,17 +11,7 @@
   <modified_user>-</modified_user>
   <modified_date>2017/11/23 11:38:01.539</modified_date>
   <parameters>
-    <parameter>
-      <name>P_JOB_NAME</name>
-      <default_value>test-deploy-job</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>P_PROJECT_NAME</name>
-      <default_value>grwater</default_value>
-      <description/>
-    </parameter>
-  </parameters>
+    </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -385,151 +375,104 @@
       <yloc>160</yloc>
     </entry>
     <entry>
-      <name>wrt-starting-references</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage>---- DATA ------------------------------------------------
-
-P_JOB_NAME	${P_JOB_NAME}
-P_PROJECT_NAME	${P_PROJECT_NAME}
-
-----------------------------------------------------------</logmessage>
-      <loglevel>Basic</loglevel>
-      <logsubject>RUNNING ${P_PROJECT_NAME}</logsubject>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>240</xloc>
-      <yloc>160</yloc>
-    </entry>
-    <entry>
-      <name>load-job</name>
-      <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>${CONTENT_HOME}/jobs/${V_JOB_NAME}.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>Y</set_logfile>
-      <logfile>${LOG_HOME}/${V_JOB_NAME}</logfile>
-      <logext>log</logext>
-      <add_date>Y</add_date>
-      <add_time>Y</add_time>
-      <loglevel>Basic</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>912</xloc>
-      <yloc>160</yloc>
-    </entry>
-    <entry>
-      <name>Success</name>
-      <description/>
-      <type>SUCCESS</type>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>1024</xloc>
-      <yloc>160</yloc>
-    </entry>
-    <entry>
-      <name>aj-error-from-load-job</name>
-      <description/>
-      <type>ABORT</type>
-      <message>Error on ${P_JOB_NAME}</message>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>912</xloc>
-      <yloc>272</yloc>
-    </entry>
-    <entry>
-      <name>kjb-load-properties</name>
-      <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>${CONTENT_COMMON_HOME}/jobs/kjb-load-properties.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>752</xloc>
-      <yloc>160</yloc>
-    </entry>
-    <entry>
-      <name>sv-V_JOB_NAME_AND_V_PROJECT_NAME</name>
+      <name>sv-common.properties</name>
       <description/>
       <type>SET_VARIABLES</type>
       <replacevars>Y</replacevars>
-      <filename/>
+      <filename>${CONFIG_DIR}/properties/common.properties</filename>
       <file_variable_type>ROOT_JOB</file_variable_type>
       <fields>
-        <field>
-          <variable_name>V_JOB_NAME</variable_name>
-          <variable_value>${P_JOB_NAME}</variable_value>
-          <variable_type>ROOT_JOB</variable_type>
-        </field>
-        <field>
-          <variable_name>V_PROJECT_NAME</variable_name>
-          <variable_value>${P_PROJECT_NAME}</variable_value>
-          <variable_type>ROOT_JOB</variable_type>
-        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
+      <xloc>416</xloc>
       <yloc>160</yloc>
+    </entry>
+    <entry>
+      <name>sv-project.properties</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <replacevars>Y</replacevars>
+      <filename>${CONFIG_DIR}/properties/${P_PROJECT_NAME}.properties</filename>
+      <file_variable_type>ROOT_JOB</file_variable_type>
+      <fields>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>624</xloc>
+      <yloc>160</yloc>
+    </entry>
+    <entry>
+      <name>sv-job.properties</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <replacevars>Y</replacevars>
+      <filename>${CONFIG_DIR}/properties/${P_PROJECT_NAME}-${P_JOB_NAME}.properties</filename>
+      <file_variable_type>ROOT_JOB</file_variable_type>
+      <fields>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1120</xloc>
+      <yloc>160</yloc>
+    </entry>
+    <entry>
+      <name>fe-job.properties</name>
+      <description/>
+      <type>FILE_EXISTS</type>
+      <filename>${CONFIG_DIR}/properties/${P_PROJECT_NAME}-${P_JOB_NAME}.properties</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>880</xloc>
+      <yloc>160</yloc>
+    </entry>
+    <entry>
+      <name>wtl-no-job-properties</name>
+      <description/>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>
+JOB NAME - ${P_JOB_NAME}
+
+</logmessage>
+      <loglevel>Minimal</loglevel>
+      <logsubject>--------NO JOB PROPERTIES---------</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>880</xloc>
+      <yloc>272</yloc>
+    </entry>
+    <entry>
+      <name>aj-no-project.porperties</name>
+      <description/>
+      <type>ABORT</type>
+      <message>No ${P_PROJECT_NAME}.properties found.</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>624</xloc>
+      <yloc>288</yloc>
+    </entry>
+    <entry>
+      <name>aj-no-common.properties</name>
+      <description/>
+      <type>ABORT</type>
+      <message>No commen.properties found.</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>288</yloc>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>START</from>
-      <to>wrt-starting-references</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>load-job</from>
-      <to>Success</to>
+      <from>sv-common.properties</from>
+      <to>sv-project.properties</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -537,8 +480,26 @@ P_PROJECT_NAME	${P_PROJECT_NAME}
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>load-job</from>
-      <to>aj-error-from-load-job</to>
+      <from>sv-project.properties</from>
+      <to>fe-job.properties</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>fe-job.properties</from>
+      <to>sv-job.properties</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>fe-job.properties</from>
+      <to>wtl-no-job-properties</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -546,41 +507,83 @@ P_PROJECT_NAME	${P_PROJECT_NAME}
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>kjb-load-properties</from>
-      <to>load-job</to>
+      <from>sv-project.properties</from>
+      <to>aj-no-project.porperties</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
+      <evaluation>N</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>wrt-starting-references</from>
-      <to>sv-V_JOB_NAME_AND_V_PROJECT_NAME</to>
+      <from>sv-common.properties</from>
+      <to>aj-no-common.properties</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
+      <evaluation>N</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>sv-V_JOB_NAME_AND_V_PROJECT_NAME</from>
-      <to>kjb-load-properties</to>
+      <from>START</from>
+      <to>sv-common.properties</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
     <notepad>
-      <note>V_BATCH_ID
-Make sure to uncheck "Pass Batch ID" via Job Properties > Settings</note>
+      <note>Running BEFORE LOCAL DEVELOP.</note>
+      <xloc>480</xloc>
+      <yloc>64</yloc>
+      <width>217</width>
+      <heigth>24</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Sets V_JOB_NAME
+jb_main_${P_JOB_NAME}</note>
+      <xloc>1056</xloc>
+      <yloc>240</yloc>
+      <width>162</width>
+      <heigth>42</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>NOTE: all files should exist on respective folders</note>
       <xloc>48</xloc>
-      <yloc>32</yloc>
-      <width>463</width>
-      <heigth>44</heigth>
+      <yloc>64</yloc>
+      <width>338</width>
+      <heigth>27</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>11</fontsize>
       <fontbold>N</fontbold>
