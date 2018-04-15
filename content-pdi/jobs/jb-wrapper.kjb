@@ -12,6 +12,11 @@
   <modified_date>2017/11/23 11:38:01.539</modified_date>
   <parameters>
     <parameter>
+      <name>P_FORCE_EXECUTION</name>
+      <default_value>0</default_value>
+      <description/>
+    </parameter>
+    <parameter>
       <name>P_JOB_NAME</name>
       <default_value>test-deploy-job</default_value>
       <description/>
@@ -507,6 +512,11 @@ P_PROJECT_NAME	${P_PROJECT_NAME}
         <field>
           <variable_name>V_PROJECT_NAME</variable_name>
           <variable_value>${P_PROJECT_NAME}</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>V_FORCE_EXECUTION</variable_name>
+          <variable_value>${P_FORCE_EXECUTION}</variable_value>
           <variable_type>ROOT_JOB</variable_type>
         </field>
       </fields>
