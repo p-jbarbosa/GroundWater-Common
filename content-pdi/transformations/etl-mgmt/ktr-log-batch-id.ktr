@@ -546,7 +546,7 @@
     <displayHeader>Y</displayHeader>
     <limitRows>N</limitRows>
     <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>----------------- JOB RUN DETAILS: -----------------</logmessage>
+    <logmessage>** BATCH DETAILS **</logmessage>
     <fields>
       <field>
         <name>batch_id</name>

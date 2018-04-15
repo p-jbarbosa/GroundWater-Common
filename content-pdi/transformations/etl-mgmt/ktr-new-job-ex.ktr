@@ -935,7 +935,7 @@
     <displayHeader>Y</displayHeader>
     <limitRows>N</limitRows>
     <limitRowsNumber>0</limitRowsNumber>
-    <logmessage/>
+    <logmessage>** CHECKPOINT DETAILS **</logmessage>
     <fields>
       <field>
         <name>checkpoint</name>

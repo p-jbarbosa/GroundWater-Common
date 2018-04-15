@@ -468,6 +468,16 @@ JOB NAME - ${P_JOB_NAME}
       <xloc>416</xloc>
       <yloc>288</yloc>
     </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1264</xloc>
+      <yloc>160</yloc>
+    </entry>
   </entries>
   <hops>
     <hop>
@@ -533,29 +543,17 @@ JOB NAME - ${P_JOB_NAME}
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
+    <hop>
+      <from>sv-job.properties</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
-    <notepad>
-      <note>Running BEFORE LOCAL DEVELOP.</note>
-      <xloc>480</xloc>
-      <yloc>64</yloc>
-      <width>217</width>
-      <heigth>24</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
     <notepad>
       <note>Sets V_JOB_NAME
 jb_main_${P_JOB_NAME}</note>
