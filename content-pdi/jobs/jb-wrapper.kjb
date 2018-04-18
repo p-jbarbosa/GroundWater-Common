@@ -18,12 +18,12 @@
     </parameter>
     <parameter>
       <name>P_JOB_NAME</name>
-      <default_value>test-deploy-job</default_value>
+      <default_value>test-deploy-job1</default_value>
       <description/>
     </parameter>
     <parameter>
       <name>P_PROJECT_NAME</name>
-      <default_value>grwater</default_value>
+      <default_value>grwater1</default_value>
       <description/>
     </parameter>
   </parameters>
@@ -523,7 +523,7 @@ P_PROJECT_NAME	${P_PROJECT_NAME}
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
+      <xloc>480</xloc>
       <yloc>160</yloc>
     </entry>
     <entry>

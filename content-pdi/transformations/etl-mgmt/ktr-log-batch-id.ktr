@@ -444,7 +444,7 @@
     </hop>
     <hop>
       <from>Set V_BATCH_ID</from>
-      <to>wtl-system-info</to>
+      <to>ac_target_wtl-system-info</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -532,7 +532,7 @@
     </GUI>
   </step>
   <step>
-    <name>wtl-system-info</name>
+    <name>ac_target_wtl-system-info</name>
     <type>WriteToLog</type>
     <description/>
     <distribute>Y</distribute>
@@ -566,7 +566,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>400</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -579,6 +579,14 @@
   <attributes>
     <group>
       <name>explorerState</name>
+      <attribute>
+        <key>ac_target_wtl-system-info</key>
+        <value/>
+      </attribute>
+      <attribute>
+        <key>ac_target_wtl_variables_ok</key>
+        <value/>
+      </attribute>
     </group>
   </attributes>
 </transformation>
