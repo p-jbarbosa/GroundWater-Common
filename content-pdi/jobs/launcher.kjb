@@ -390,7 +390,7 @@
       <yloc>224</yloc>
     </entry>
     <entry>
-      <name>Simple evaluation</name>
+      <name>se-where-to-execute</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <valuetype>variable</valuetype>
@@ -530,7 +530,7 @@ P_JOB_NAME ${P_JOB_NAME}</logmessage>
     </hop>
     <hop>
       <from>wtl-EXECUTION</from>
-      <to>Simple evaluation</to>
+      <to>se-where-to-execute</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -538,7 +538,7 @@ P_JOB_NAME ${P_JOB_NAME}</logmessage>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Simple evaluation</from>
+      <from>se-where-to-execute</from>
       <to>ss-execute-kitchen</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -556,7 +556,7 @@ P_JOB_NAME ${P_JOB_NAME}</logmessage>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Simple evaluation</from>
+      <from>se-where-to-execute</from>
       <to>jb-wrapper</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
